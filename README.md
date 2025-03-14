@@ -1,8 +1,8 @@
 # EX01 Developing a Simple Webserver
-## Date:
+## Date:14-03-2025
 
 ## AIM:
-To develop a simple webserver to serve html pages and display the list of protocols in TCP/IP Protocol Suite.
+To develop a simple webserver to create a lyrics searching webpage
 
 ## DESIGN STEPS:
 ### Step 1: 
@@ -36,10 +36,32 @@ Start the server script and check for errors.
 Open a browser and navigate to http://127.0.0.1:8000 (or the assigned port).
 
 ## PROGRAM:
-
-
+~~~
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lyrics Search</title>
+</head>
+<body>
+    <h1>Lyrics Search</h1>
+    <input type="text" id="song" placeholder="Enter song name">
+    <button onclick="searchLyrics()">Search</button>
+    <div id="lyrics"></div>
+    
+    <script>
+        function searchLyrics() {
+            document.getElementById('lyrics').innerHTML = "Lyrics will appear here.";
+        }
+    </script>
+</body>
+</html>
+~~~
 ## OUTPUT:
 
+[alt text](exp1-webexp-2.png)
+[alt text](exp1-webexp-1.png)
 
 ## RESULT:
 The program for implementing simple webserver is executed successfully.
