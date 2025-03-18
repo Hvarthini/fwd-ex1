@@ -1,8 +1,9 @@
 # EX01 Developing a Simple Webserver
 ## Date:14-03-2025
+## Register Number: 212224110023
 
 ## AIM:
-To develop a simple webserver to create a lyrics searching webpage
+To develop a simple webserver to create a emojis.
 
 ## DESIGN STEPS:
 ### Step 1: 
@@ -36,32 +37,38 @@ Start the server script and check for errors.
 Open a browser and navigate to http://127.0.0.1:8000 (or the assigned port).
 
 ## PROGRAM:
-~~~
+```
+from http.server import HTTPServer, BaseHTTPRequestHandler
+content = """
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lyrics Search</title>
-</head>
+<html>
+<meta charset="UTF-8">
 <body>
-    <h1>Lyrics Search</h1>
-    <input type="text" id="song" placeholder="Enter song name">
-    <button onclick="searchLyrics()">Search</button>
-    <div id="lyrics"></div>
-    
-    <script>
-        function searchLyrics() {
-            document.getElementById('lyrics').innerHTML = "Lyrics will appear here.";
-        }
-    </script>
+
+<h1>Sized Emojis</h1>
+
+<p style="font-size:48px">
+&#128512; &#128516; &#128525; &#128151;
+</p>
+
 </body>
 </html>
-~~~
+"""
+class myhandler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        print("request received")
+        self.send_response(200)
+        self.send_header('content-type', 'text/html; charset=utf-8')
+        self.end_headers()
+        self.wfile.write(content.encode())
+server_address = ('',80)
+httpd = HTTPServer(server_address,myhandler)
+print("my webserver is running...")
+httpd.serve_forever()
+```
 ## OUTPUT:
-
-[alt text](exp1-webexp-2.png)
-[alt text](exp1-webexp-1.png)
+![Screenshot (1)](https://github.com/user-attachments/assets/264bfff8-27df-4d11-97dd-509da2269901)
+![Screenshot (2)](https://github.com/user-attachments/assets/b2367f59-efac-4464-99f2-dd0a913a0a4e)
 
 ## RESULT:
 The program for implementing simple webserver is executed successfully.
